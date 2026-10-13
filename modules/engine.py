@@ -12,6 +12,7 @@ class AgentEngine():
 
     def __init__(self):
         pass
+    
     def generate_code(self, user_query: str, prompt_structure_stroke: str):
         load_dotenv()
         client = GigaChat(
