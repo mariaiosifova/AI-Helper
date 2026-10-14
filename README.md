@@ -54,3 +54,20 @@ from gigachat.models import Chat, Messages, MessagesRole
 **Методы класса:**
 
 - *generate_code(user_query: str, prompt_structure_stroke: str)* - устанавливает соединение с **GigaChat-2-Pro**, получает ответ на созданный в переменной PROMPT промпт в виде кода, убирает лишние символы, возвращает код в формате строки `str(response)`. Поля метода: `user_query` - запрос пользователя, `prompt_structure_stroke` - структура таблицы
+
+## Файл modules/validator.py
+
+#### Импорты:
+
+```Python
+import pandas as pd
+```
+
+#### Структура класса ResponseValidator()
+
+**Поля класса:** *нет*
+
+**Методы класса:**
+
+- *is_safe(code_text: str)* - проверяет код, полученный от **GigaChat** на наличие опасных импортов. Список опасных импортов: `dangerous_strokes_array`. Метод возвращает **True**, если не нашел ни одного опасного импорта, иначе - **False**. Поля метода: `code_text` - текст кода, полученного от GigaChat
+- *execute_code(dataframe: pd.DataFrame, code_text: str)* - выполняет код на локальном датафрейме, сохраняет результат выполнения в переменной `result`, возвращает `result`. Поля метода: `dataframe` - датафрейм, хранящей в себе загруженную таблицу пользователя, `code_text` - текст кода, полученного от **GigaChat**
