@@ -71,3 +71,19 @@ import pandas as pd
 
 - *is_safe(code_text: str)* - проверяет код, полученный от **GigaChat** на наличие опасных импортов. Список опасных импортов: `dangerous_strokes_array`. Метод возвращает **True**, если не нашел ни одного опасного импорта, иначе - **False**. Поля метода: `code_text` - текст кода, полученного от **GigaChat**
 - *execute_code(dataframe: pd.DataFrame, code_text: str)* - выполняет код на локальном датафрейме, сохраняет результат выполнения в переменной `result`, возвращает `result`. Поля метода: `dataframe` - датафрейм, хранящей в себе загруженную таблицу пользователя, `code_text` - текст кода, полученного от **GigaChat**
+
+## Файл main.py
+
+#### Импорты:
+
+```Python
+import os
+from dotenv import load_dotenv 
+import urllib3
+from modules.engine import AgentEngine
+from modules.loader import TableLoader
+from modules.validator import ResponseValidator
+```
+**Методы:**
+
+- *execute_program()* - сохраняет в локальные переменные нужные для запуска программы значения, объявляет экземпляры классов и запускает бесконечный цикл: чтение запроса пользователя, если ввел "*выход*" - завершение программы, иначе - генерация, проверка, запуск кода, выдача результата пользователю
