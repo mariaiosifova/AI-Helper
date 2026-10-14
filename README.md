@@ -1,5 +1,6 @@
 # AI-Helper
-This is an AI assistant designed to free you from daily routine tasks and make your life easier. For instance, you no longer need to manually track your weekly water intake or calculate the average—or even write code to compute these figures; simply ask the assistant to do it for you. And that is just a fraction of what this AI helper can do.
+
+Это помощник с искусственным интеллектом, созданный для того, чтобы освободить вас от ежедневных рутинных задач и облегчить вашу жизнь. Например, вам больше не нужно вручную отслеживать еженедельное потребление воды или вычислять среднее значение — или даже писать код для вычисления этих цифр; просто попросите помощника сделать это за вас. И это лишь малая часть того, что может сделать этот помощник с искусственным интеллектом.
 
 ## Руководство по запуску:
 
@@ -12,3 +13,24 @@ This is an AI assistant designed to free you from daily routine tasks and make y
 7. Найдите и скопируйте путь к таблице, с которой ИИ агент должен взаимодействовать
 8. В файле .env сохраните путь в переменную **PATH_TO_FILE**
 9. Все предварительные действия готовы. Запускайте main.py и пользуйтесь с удовольствием
+
+## Файл modules/loader.py
+
+#### Импорты:
+
+```Python
+import pandas as pd
+import os
+```
+
+#### Структура класса TableLoader()
+
+**Поля класса:** 
+
+- *file_path* - путь к файлу, в котором содержится таблица
+- *df* - датафрейм с результатом чтения таблицы из файла
+
+**Методы класса:**
+
+- *load_data()* - чтение файла и выброс ошибок при передаче файла с неподдерживаемым расширением или при передаче неправильного пути к файлу с таблицей
+- *get_table_schema()* - формирование строки со структурой таблицы: названия столбцов, типы данных в них, сохранение первых трех строк таблице. Метод возвращает строку со структурой таблицы ```prompt_structure_stroke```
