@@ -34,3 +34,23 @@ import os
 
 - *load_data()* - чтение файла и выброс ошибок при передаче файла с неподдерживаемым расширением или при передаче неправильного пути к файлу с таблицей
 - *get_table_schema()* - формирование строки со структурой таблицы: названия столбцов, типы данных в них, сохранение первых трех строк таблице. Метод возвращает строку со структурой таблицы ```prompt_structure_stroke```
+
+## Файл modules/engine.py
+
+#### Импорты:
+
+```Python
+import os
+from dotenv import load_dotenv 
+import urllib3
+from gigachat import GigaChat
+from gigachat.models import Chat, Messages, MessagesRole
+```
+
+#### Структура класса AgentEngine()
+
+**Поля класса:** *нет*
+
+**Методы класса:**
+
+- *generate_code(user_query: str, prompt_structure_stroke: str)* - устанавливает соединение с **GigaChat-2-Pro**, получает ответ на созданный в переменной PROMPT промпт в виде кода, убирает лишние символы, возвращает код в формате строки `str(response)`. Поля метода: `user_query` - запрос пользователя, `prompt_structure_stroke` - структура таблицы
